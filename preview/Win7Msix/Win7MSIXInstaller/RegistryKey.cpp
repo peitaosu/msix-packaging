@@ -102,7 +102,7 @@ HRESULT RegistryKey::SetValue(
 
 HRESULT RegistryKey::SetStringValue(PCWSTR name, const std::wstring& value)
 {
-    return SetValue(name, value.c_str(), static_cast<DWORD>(value.size() * sizeof(WCHAR)), REG_SZ);
+    return SetValue(name, value.c_str(), static_cast<DWORD>((value.size() + 1) * sizeof(WCHAR)), REG_SZ);
 }
 
 HRESULT RegistryKey::DeleteValue(_In_opt_ PCWSTR name)
